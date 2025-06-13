@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jasa Tulis Tangan Profesional - Upgrade</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fff9f0 0%, #f5e7c1 100%);
+    color: #4b3b1b;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Header */
+  header {
+    background: #b17732;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  }
+
+  header .logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+
+  nav ul li a {
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 2px;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+  }
+
+  nav ul li a:hover,
+  nav ul li a:focus {
+    background-color: #8c5c16;
+    box-shadow: 0 0 8px rgba(255 255 255 / 0.3);
+  }
+
+  nav ul li a:hover::after,
+  nav ul li a:focus::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  /* Hero */
+  .hero {
+    background: url('https://images.unsplash.com/photo-1524594157366-4c503b0be7f9?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(75, 59, 27, 0.75);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255 255 255 / 0.1);
+    padding: 40px 35px;
+    border-radius: 14px;
+    max-width: 700px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    animation: fadeInUp 1.2s ease forwards;
+  }
+
+  .hero-content h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.8rem;
+    margin-bottom: 22px;
+    text-shadow: 1.5px 1.5px 4px rgba(0,0,0,0.6);
+  }
+
+  .hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: 35px;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+  }
+
+  .btn-primary {
+    background: linear-gradient(45deg, #d5a758, #b17732);
+    color: #4b3b1b;
+    font-weight: 700;
+    padding: 16px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(213,167,88,0.7);
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background: linear-gradient(45deg, #b17732, #8c5c16);
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(177,119,50,0.9);
+  }
+
+  /* Features */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 28px;
+    padding: 70px 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    background: #fff3d7;
+    border-radius: 16px;
+    padding: 35px 25px;
+    box-shadow: 0 8px 20px rgba(181,131,56,0.3);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: default;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(181,131,56,0.5);
+  }
+
+  .feature-card svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    fill: #a37519;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+  }
+
+  .feature-card h3 {
+    margin-bottom: 18px;
+    color: #a37519;
+    font-size: 1.4rem;
+  }
+
+  .feature-card p {
+    font-size: 1.05rem;
+    color: #5a4a18;
+    line-height: 1.5;
+  }
+
+  /* Pricing */
+  .pricing {
+    background: #fff9f0;
+    padding: 70px 20px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pricing h2 {
+    margin-bottom: 55px;
+    font-size: 2.8rem;
+    color: #7a5e19;
+    text-shadow: 1px 1px 3px rgba(255 255 255 / 0.7);
+  }
+
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 30px;
+    justify-items: center;
+  }
+
+  .pricing-card {
+    background: #fff3d7;
+    border-radius: 20px;
+    padding: 38px 30px;
+    box-shadow: 0 12px 30px rgba(181,131,56,0.4);
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: default;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(181,131,56,0.7);
+  }
+
+  .pricing-card h3 {
+    font-size: 1.9rem;
+    margin-bottom: 18px;
+    color: #a37519;
+    font-weight: 700;
+  }
+
+  .price {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #d5a758;
+    margin-bottom: 32px;
+    text-shadow: 1px 1px 3px rgba(181,131,56,0.6);
+  }
+
+  .pricing-card ul {
+    list-style: none;
+    margin-bottom: 32px;
+    color: #5a4a18;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 0;
+  }
+
+  .pricing-card ul li {
+    margin-bottom: 14px;
+    position: relative;
+    padding-left: 22px;
+  }
+
+  .pricing-card ul li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #a37519;
+    font-weight: 900;
+  }
+
+  .btn-secondary {
+    background: linear-gradient(45deg, #a37519, #7a5e19);
+    color: white;
+    border: none;
+    padding: 14px 0;
+    font-weight: 700;
+    border-radius: 35px;
+    font-size: 1.15rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(163,117,25,0.7);
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover,
+  .btn-secondary:focus {
+    background: linear-gradient(45deg, #7a5e19, #5e4b13);
+    box-shadow: 0 8px 25px rgba(122,94,25,0.9);
+  }
+
+  /* Testimonials */
+  .testimonials {
+    background: #fff3d7;
+    padding: 60px 30px 80px;
+    max-width: 850px;
+    margin: 0 auto 60px auto;
+    border-radius: 20px;
+    box-shadow: 0 8px 28px rgba(181,131,56,0.3);
+  }
+
+  .testimonials h2 {
+    text-align: center;
+    margin-bottom: 45px;
+    color: #7a5e19;
+    font-size: 2.6rem;
+  }
+
+  .testimonial {
+    margin-bottom: 30px;
+    font-style: italic;
+    font-size: 1.15rem;
+    position: relative;
+    padding-left: 50px;
+    color: #5a4a18;
+  }
+
+  .testimonial::before {
+    content: "“";
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.5rem;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+    color: #a37519;
+    opacity: 0.3;
+  }
+
+  .testimonial-author {
+    margin-top: 8px;
+    font-weight: 700;
+    text-align: right;
+    color: #a37519;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.25rem;
+  }
+
+  /* Order Form */
+  .order-form {
+    background: #fff9f0;
+    max-width: 600px;
+    margin: 0 auto 80px auto;
+    padding: 45px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(181,131,56,0.25);
+  }
+
+  .order-form h2 {
+    text-align: center;
+    margin-bottom: 38px;
+    color: #7a5e19;
+    font-size: 2.4rem;
+  }
+
+  .order-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #5a4a18;
+  }
+
+  .order-form input,
+  .order-form select,
+  .order-form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 25px;
+    border: 2px solid #d5a758;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+
+  .order-form input:focus,
+  .order-form select:focus,
+  .order-form textarea:focus {
+    outline: none;
+    border-color: #a37519;
+    box-shadow: 0 0 8px rgba(163,117,25,0.6);
+  }
+
+  .order-form textarea {
+    min-height: 120px;
+  }
+
+  .order-form button {
+    width: 100%;
+    background: linear-gradient(45deg, #b17732, #8c5c16);
+    color: white;
+    padding: 18px 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(177,119,50,0.8);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .order-form button:hover,
+  .order-form button:focus {
+    background: linear-gradient(45deg, #8c5c16, #5e4b13);
+    box-shadow: 0 10px 30px rgba(140,92,22,0.9);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 25px 20px;
+    background: #b17732;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.15);
+  }
+
+  /* Floating WhatsApp button */
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: #25d366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s ease;
+    z-index: 10000;
+  }
+
+  .whatsapp-btn:hover {
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.9);
+  }
+
+  .whatsapp-btn svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 700px) {
+    header {
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px 24px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+    }
+
+    .features {
+      padding: 40px 20px;
+    }
+
+    .pricing {
+      padding: 50px 15px 70px;
+    }
+
+    .pricing-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .order-form {
+      padding: 35px 25px;
+      margin-bottom: 60px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">TulisTangan</div>
+  <nav>
+    <ul>
+      <li><a href="#hero">Beranda</a></li>
+      <li><a href="#features">Keunggulan</a></li>
+      <li><a href="#pricing">Paket</a></li>
+      <li><a href="#testimonials">Testimoni</a></li>
+      <li><a href="#order">Pesan</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="hero" class="hero" tabindex="-1">
+  <div class="hero-content" role="region" aria-label="Introduction jasa tulis tangan">
+    <h1>Jasa Tulis Tangan unik</h1>
+    <p>Buat Tugas, Rangkuman dengan sentuhan tulisan tangan eksklusif dari ahli kami.</p>
+    <button class="btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})" aria-label="Pesan sekarang">Pesan Sekarang</button>
+  </div>
+</section>
+
+<section id="features" class="features" role="region" aria-label="Keunggulan jasa tulis tangan">
+  <article class="feature-card" tabindex="0">
+    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      <path d="M20 44l-8-8 4-4 4 4 12-12 4 4z"/>
+    </svg>
+    <h3>Tulisan Rapi & Elegan</h3>
+    <p>Setiap goresan dibuat dengan detail dan kesabaran untuk hasil maksimal.</p>
+  </article>
+  <article class="feature-card" tabindex="0">
+    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      <path d="M32 12a20 20 0 1 0 20 20 20 20 0 0 0-20-20zM26 38l-6-6 4-4 2 2 10-10 4 4z"/>
+    </svg>
+    <h3>Desain Personal</h3>
+    <p>Kustomisasi tulisan sesuai gaya dan kebutuhan Anda.</p>
+  </article>
+  <article class="feature-card" tabindex="0">
+    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      <path d="M50 18v28a8 8 0 0 1-16 0V18zM28 18v28a8 8 0 0 1-16 0V18z"/>
+    </svg>
+    <h3>Pengiriman Cepat</h3>
+    <p>Pesanan dikirim bisa cod ditempat..</p>
+  </article>
+</section>
+
+<section id="pricing" class="pricing" role="region" aria-label="Paket jasa tulis tangan">
+  <h2>Pilih Paket Anda</h2>
+  <div class="pricing-cards">
+    <div class="pricing-card" tabindex="0" aria-label="Paket Basic harga lima puluh ribu rupiah">
+      <h3>Basic</h3>
+      <div class="price">Rp10.000</div>
+      <ul>
+        <li>Surat pendek, rangkuman dan tugas (1 lembar)</li>
+        <li>Pengiriman cetak</li>
+        <li>Revisi 1x</li>
+      </ul>
+      <button class="btn-secondary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})" aria-label="Pesan paket basic">Pesan Paket</button>
+    </div>
+    <div class="pricing-card" tabindex="0" aria-label="Paket Standard harga sepuluh ribu rupiah">
+      <h3>Standard</h3>
+      <div class="price">Rp20.000</div>
+      <ul>
+        <li>Surat panjang (1-2 lembar)</li>
+        <li>Pengiriman cetak</li>
+        <li>Revisi 2x</li>
+      </ul>
+      <button class="btn-secondary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})" aria-label="Pesan paket standard">Pesan Paket</button>
+    </div>
+    <div class="pricing-card" tabindex="0" aria-label="Paket Premium harga dua puluh ribu rupiah">
+      <h3>Premium</h3>
+      <div class="price">Rp30.000</div>
+      <ul>
+        <li>Surat panjang & dekorasi</li>
+        <li>Pengiriman c</li>
+        <li>Revisi tanpa batas</li>
+      </ul>
+      <button class="btn-secondary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})" aria-label="Pesan paket premium">Pesan Paket</button>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testimonials" role="region" aria-label="Testimoni pelanggan">
+  <h2>Testimoni Pelanggan</h2>
+  <div class="testimonial" tabindex="0">
+    “Tulisan tangannya sangat rapi dan cantik, hasilnya melebihi ekspektasi saya!” 
+    <div class="testimonial-author">- Lina, Jakarta</div>
+  </div>
+  <div class="testimonial" tabindex="0">
+    “Pelayanan cepat dan responsif. Saya sangat puas dengan hasilnya.” 
+    <div class="testimonial-author">- Ahmad, Bandung</div>
+  </div>
+  <div class="testimonial" tabindex="0">
+    “Rekomendasi banget untuk yang mau tulisan tangan unik dan personal.” 
+    <div class="testimonial-author">- Sari, Surabaya</div>
+  </div>
+</section>
+
+<section id="order" class="order-form" role="region" aria-label="Form pemesanan jasa tulis tangan">
+  <h2>Form Pemesanan</h2>
+  <form id="orderForm" onsubmit="submitOrder(event)">
+    <label for="name">Nama Lengkap</label>
+    <input type="text" id="name" name="name" required placeholder="Masukkan nama lengkap Anda" />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required placeholder="Masukkan email aktif" />
+
+    <label for="package">Pilih Paket</label>
+    <select id="package" name="package" required>
+      <option value="" disabled selected>Pilih paket</option>
+      <option value="basic">Basic - Rp20.000</option>
+      <option value="standard">Standard - Rp20.000</option>
+      <option value="premium">Premium - Rp30.000</option>
+    </select>
+
+    <label for="details">Detail Pesanan</label>
+    <textarea id="details" name="details" placeholder="Tuliskan detail atau pesan khusus Anda"></textarea>
+
+    <button type="submit" aria-live="polite" aria-busy="false">Kirim Pesanan</button>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 TulisTangan - Jasa Tulis Tangan Profesional | Hubungi: +62882-0065-80949 | Email: dimassadii39@gmail.com
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://wa.me/0882006580949" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Hubungi kami via WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M20.5 3.5A11.8 11.8 0 0012 1C6.1 1 1.5 5.6 1.5 11.5c0 2.1.7 4 2 5.6L1 23l6-2a10.5 10.5 0 005 1.4h.1c5.9 0 10.5-4.6 10.5-10.5a11.7 11.7 0 00-3.6-8.4zm-8.3 15.1a8.7 8.7 0 01-4.6-1.4l-.3-.2-3.1.9.8-3.1-.2-.3a8.8 8.8 0 0115-9.3 8.9 8.9 0 01-7.6 13.4zm4.6-6.8c-.3-.1-1.8-.9-2-.9s-.4 0-.6.5.6.9.7 1c.1.1 1 .2 1.5.3.2 0 .4 0 .5-.2.1-.1.1-.4.1-.7 0-.4 0-.5-.2-.9z"/>
+  </svg>
+</a>
+
+<script>
+  function submitOrder(event) {
+    event.preventDefault();
+    const form = event.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    // Disable button and show loading
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Mengirim...';
+    submitBtn.setAttribute('aria-busy', 'true');
+
+    setTimeout(() => {
+      alert('Terima kasih sudah memesan! Kami akan menghubungi Anda segera.');
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Kirim Pesanan';
+      submitBtn.setAttribute('aria-busy', 'false');
+    }, 1500);
+  }
+</script>
+
+</body>
+</html>
